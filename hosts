@@ -11,7 +11,7 @@ debian[1:3]
 centos
 debian
 
-[all:vars]
+[linux:vars]
 ansible_user=user
 ansible_become=true
 ansible_become_pass=newpass
