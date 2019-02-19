@@ -1,7 +1,7 @@
 # Every YAML file should start with tree dashes
 ---
 
-example_integer: 1
+example_integer: "1"
 
 # Every YAML file should end with three dots
 ...
