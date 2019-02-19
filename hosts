@@ -2,11 +2,7 @@
 ws-mgordillo ansible_connection=local
 
 [centos]
-centos1 ansible_user=user ansible_become=true ansible_become_pass=newpass
-centos2 ansible_host=172.18.0.3 ansible_user=user ansible_become=true ansible_become_pass=newpass
-centos3 ansible_host=172.18.0.4 ansible_user=user ansible_become=true ansible_become_pass=newpass
+centos[1:3] ansible_user=user ansible_become=true ansible_become_pass=newpass
 
 [debian]
-debian1 ansible_host=172.18.0.5 ansible_user=user ansible_become=true ansible_become_pass=newpass
-debian2 ansible_host=172.18.0.6 ansible_user=user ansible_become=true ansible_become_pass=newpass
-debian3 ansible_host=172.18.0.7 ansible_user=user ansible_become=true ansible_become_pass=newpass
+debian[1:3] ansible_host=172.18.0.5 ansible_user=user ansible_become=true ansible_become_pass=newpass
