@@ -1,6 +1,9 @@
 # Every YAML file should start with tree dashes
 ---
-example_key_1: this is a string
-example_key_2: this is another string
+
+no_quotes: this is a string example
+double_quotes: "this is string example"
+single_quotes: 'this is string example'
+
 # Every YAML file should end with three dots
 ...
