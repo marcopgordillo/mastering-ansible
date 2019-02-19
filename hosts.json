@@ -1,0 +1,35 @@
+{
+	"control": {
+		"hosts": {
+			"ws-mgordillo": {
+				"ansible_connection": "local"
+			}
+		}
+	},
+	"debian": {
+		"hosts": {
+			"debian1": null,
+			"debian2": null,
+			"debian3": null
+		}
+	},
+	"centos": {
+		"hosts": {
+			"centos1": null,
+			"centos2": null,
+			"centos3": null
+		}
+	},
+	"linux": {
+		"children": {
+			"debian": null,
+			"centos": null
+		},
+		"vars": {
+			"ansible_user": "user",
+			"ansible_become": true,
+			"ansible_become_pass": "newpass"
+		}
+	}
+}
+
