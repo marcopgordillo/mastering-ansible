@@ -11,12 +11,12 @@
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
   tasks:
-    - name: Ansible Jinja2 for statement
+    - name: Ansible Jinja2 for range
       debug:
         msg: >
-             --== Ansible Jinja2 for statement ==--
-             {% for entry in ansible_all_ipv4_addresses -%}
-                IP Address entry {{ loop.index }} = {{ entry }}
+             --== Ansible Jinja2 for range
+             {% for entry in range(1, 11) -%}
+                {{ entry }}
              {% endfor %}
 # Three dots indicate the end of a YAML document
 ...
