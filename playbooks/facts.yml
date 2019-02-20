@@ -6,11 +6,32 @@
 -
 
   # Target: where our play will run and options it will run with
-  hosts: all
+  hosts: linux
 
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
   tasks:
+    - name: Make Facts Dir
+      file:
+        path: /etc/ansible/facts.d
+        recurse: yes
+        state: directory
+
+    - name: Copy Fact 1
+      copy:
+        src: /etc/ansible/facts.d/getdate1.fact
+        dest: /etc/ansible/facts.d/getdate1.fact
+        mode: 0755
+
+    - name: Copy Fact 2
+      copy:
+        src: /etc/ansible/facts.d/getdate2.fact
+        dest: /etc/ansible/facts.d/getdate2.fact
+        mode: 0755
+
+    - name: Refresh Facts
+      setup:
+
     - name: Show IP Address
       debug:
         msg: "{{ ansible_default_ipv4.address }}"
