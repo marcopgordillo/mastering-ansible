@@ -12,6 +12,7 @@
   # Variable: variables that will apply to the play, on all target systems
   vars_prompt:
     - name: username
+      private: false
  
   # Task: the list of tasks that will be executed within the playbook
   tasks:
