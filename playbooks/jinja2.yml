@@ -11,15 +11,12 @@
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
   tasks:
-    - name: Ansible Jinja2 if varible is defined ( where variable is not defined )
+    - name: Ansible Jinja2 for statement
       debug:
         msg: >
-             --== Ansible Jinja2 if variable is defined ( where variable is not defined ) ==--
-             {% set example_variable = 'defined' -%}
-             {% if example_variable is defined -%}
-                example_variable is defined
-             {% else -%}
-                example_variable is not defined
-             {% endif %}
+             --== Ansible Jinja2 for statement ==--
+             {% for entry in ansible_all_ipv4_addresses -%}
+                IP Address entry {{ loop.index }} = {{ entry }}
+             {% endfor %}
 # Three dots indicate the end of a YAML document
 ...
