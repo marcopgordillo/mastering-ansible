@@ -6,20 +6,20 @@
 -
  
   # Target: where our play will run and options it will run with
-  hosts: centos1
-  gather_facts: false
+  hosts: centos
+  gather_facts: true
  
   # Variable: variables that will apply to the play, on all target systems
-  vars_prompt:
-    - name: username
-      private: false
-    - name: password
- 
+
   # Task: the list of tasks that will be executed within the playbook
   tasks:
-    - name: Test vars_prompt
+    - name: Test hostvars with an ansible fact and collect ansible_port, dot notation
       debug:
-        msg: "{{ username }} | {{ password }}"
+        msg: "{{ hostvars[ansible_hostname].ansible_port | default('') }}"
 
+    - name: Test hostvars with an ansible fact and collect ansible_port, dict notation
+      debug:
+        msg: "{{ hostvars[ansible_hostname]['ansible_port'] | default('') }}"
+ 
 # Three dots indicate the end of a YAML document
 ...
