@@ -37,5 +37,31 @@
         dest: /etc/nginx/nginx.conf
       when: ansible_distribution == 'CentOS'
 
+    - name: Create /etc/nginx/sites-available directory if required
+      file:
+        path: /etc/nginx/sites-available
+        state: directory
+
+    - name: Create /etc/nginx/sites-enabled directory if required
+      file:
+        path: /etc/nginx/sites-enabled
+        state: directory
+
+    - name: Copy default nginx configuration
+      copy:
+        src: files/nginx-default.conf
+        dest: /etc/nginx/sites-available/default
+
+    - name: Symbolic link /etc/nginx/sites-available/default to /etc/nginx/sites-enabled/default
+      file:
+        src: /etc/nginx/sites-available/default
+        dest: /etc/nginx/sites-enabled/default
+        state: link
+
+    - name: Create nginx/html directory if required
+      file:
+        path: /usr/share/nginx/html
+        state: directory
+
 # Three dots indicate the end of a YAML document
 ...
