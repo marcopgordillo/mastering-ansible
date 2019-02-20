@@ -11,14 +11,16 @@
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
   tasks:
-    - name: Ansible Jinja2 if
+    - name: Ansible Jinja2 if elif
       debug:
         msg: >
-             --== Ansible Jinja2 if statement ==--
+             --== Ansible Jinja2 elif statement ==--
  
              {# If the hostname is ws-mgordillo, include a message -#}
              {% if ansible_hostname == "ws-mgordillo" -%}
-                   This is ws-mgordillo
+                This is ws-mgordillo
+             {% elif ansible_hostname == "centos1"  -%}
+                This is centos1 with it's modified SSH port
              {% endif %}
 
 # Three dots indicate the end of a YAML document
