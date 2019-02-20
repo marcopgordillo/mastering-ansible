@@ -11,13 +11,13 @@
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
   tasks:
-    - name: Ansible Jinja2 for range, reversed (simulate while greater 5)
+    - name: Ansible Jinja2 for range, reversed (continue if odd)
       debug:
         msg: >
-             --== Ansible Jinja2 for range, reversed (simulate while greater 5) ==--
+             --== Ansible Jinja2 for range, reversed (continue if odd) ==--
              {% for entry in range(10, 0, -1) -%}
-                {% if entry == 5 -%}
-                   {% break %}
+                {% if entry is odd -%}
+                   {% continue %}
                 {% endif -%}
                 {{ entry }}
              {% endfor %}
