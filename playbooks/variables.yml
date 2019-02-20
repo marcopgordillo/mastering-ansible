@@ -8,27 +8,25 @@
   # Target: where our play will run and options it will run with
   hosts: centos1
   gather_facts: false
-  become: yes
  
   # Variable: variables that will apply to the play, on all target systems
   vars:
-    named_list:
-      - item1
-      - item2
-      - item3
-      - item4
-
+    inline_named_list:
+      [ item1, item2, item3, item4 ]
+ 
   # Task: the list of tasks that will be executed within the playbook
   tasks:
-    - name: Test named list
+    - name: Test inline named list
       debug:
-        msg: "{{ named_list }}"
-    - name: Test named list first item dot notation
+        msg: "{{ inline_named_list }}"
+ 
+    - name: Test inline named list first item dot notation
       debug:
-        msg: "{{ named_list.0 }}"
-    - name: Test named list first item brackets notation
+        msg: "{{ inline_named_list.0 }}"
+ 
+    - name: Test inline named list first item brackets notation
       debug:
-        msg: "{{ named_list[0] }}"
+        msg: "{{ inline_named_list[0] }}"
  
 # Three dots indicate the end of a YAML document
 ...
