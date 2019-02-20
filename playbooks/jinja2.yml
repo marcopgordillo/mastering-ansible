@@ -11,19 +11,15 @@
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
   tasks:
-    - name: Ansible Jinja2 if elif
+    - name: Ansible Jinja2 if varible is defined ( where variable is not defined )
       debug:
         msg: >
-             --== Ansible Jinja2 elif statement ==--
- 
-             {# If the hostname is ws-mgordillo, include a message -#}
-             {% if ansible_hostname == "ws-mgordillo" -%}
-                This is ws-mgordillo
-             {% elif ansible_hostname == "centos1"  -%}
-                This is centos1 with it's modified SSH port
+             --== Ansible Jinja2 if variable is defined ( where variable is not defined ) ==--
+             {% set example_variable = 'defined' -%}
+             {% if example_variable is defined -%}
+                example_variable is defined
              {% else -%}
-                This is good old {{ ansible_hostname }}
+                example_variable is not defined
              {% endif %}
-
 # Three dots indicate the end of a YAML document
 ...
