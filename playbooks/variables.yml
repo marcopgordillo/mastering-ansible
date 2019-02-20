@@ -13,12 +13,13 @@
   vars_prompt:
     - name: username
       private: false
+    - name: password
  
   # Task: the list of tasks that will be executed within the playbook
   tasks:
     - name: Test vars_prompt
       debug:
-        msg: "{{ username }}"
+        msg: "{{ username }} | {{ password }}"
 
 # Three dots indicate the end of a YAML document
 ...
