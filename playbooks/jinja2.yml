@@ -21,6 +21,8 @@
                 This is ws-mgordillo
              {% elif ansible_hostname == "centos1"  -%}
                 This is centos1 with it's modified SSH port
+             {% else -%}
+                This is good old {{ ansible_hostname }}
              {% endif %}
 
 # Three dots indicate the end of a YAML document
