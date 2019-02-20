@@ -12,13 +12,20 @@
  
   # Variable: variables that will apply to the play, on all target systems
   vars:
-    example_key: example value
+    dict:  
+      dict_key: This is a dictionary value
  
   # Task: the list of tasks that will be executed within the playbook
   tasks:
-    - name: Test dictionary key value
+    - name: Test named dictionary dict
       debug:
-        msg: "{{ example_key }}"
+        msg: "{{ dict }}"
+    - name: Test named dictionary dict key value dot notation
+      debug:
+        msg: "{{ dict.dict_key }}"
+    - name: Test named dictionary dict key value python brackets notation
+      debug:
+        msg: "{{ dict['dict_key'] }}"
  
 # Three dots indicate the end of a YAML document
 ...
