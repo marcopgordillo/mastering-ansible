@@ -15,11 +15,11 @@
   tasks:
     - name: Test hostvars with an ansible fact and collect ansible_port, dot notation
       debug:
-        msg: "{{ hostvars[ansible_hostname].ansible_port | default('') }}"
+        msg: "{{ hostvars[ansible_hostname].ansible_port | default('22') }}"
 
     - name: Test hostvars with an ansible fact and collect ansible_port, dict notation
       debug:
-        msg: "{{ hostvars[ansible_hostname]['ansible_port'] | default('') }}"
+        msg: "{{ hostvars[ansible_hostname]['ansible_port'] | default('22') }}"
  
 # Three dots indicate the end of a YAML document
 ...
