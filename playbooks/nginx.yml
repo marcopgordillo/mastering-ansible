@@ -18,19 +18,11 @@
         state: latest
       when: ansible_distribution == 'CentOS'
 
-    - name: Install Nginx CentOS
-      yum:
+    - name: Install Nginx
+      package:
         name: nginx
         update_cache: yes
         state: latest
-      when: ansible_distribution == 'CentOS'
-
-    - name: Install Nginx Debian
-      apt:
-        name: nginx
-        update_cache: yes
-        state: latest
-      when: ansible_distribution == 'Debian'
 
 # Three dots indicate the end of a YAML document
 ...
