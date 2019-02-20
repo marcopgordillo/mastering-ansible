@@ -10,23 +10,63 @@
   gather_facts: false
  
   # Variable: variables that will apply to the play, on all target systems
-  vars:
-    inline_named_list:
-      [ item1, item2, item3, item4 ]
+  vars_files:
+    - external_vars.yml
  
   # Task: the list of tasks that will be executed within the playbook
   tasks:
-    - name: Test inline named list
+    - name: Test external dictionary key value
       debug:
-        msg: "{{ inline_named_list }}"
+        msg: "{{ external_example_key }}"
+
+    - name: Test external named dictionary dictionary
+      debug:
+        msg: "{{ external_dict }}"
+
+    - name: Test external named dictionary dictionary key value with dictionary dot notation
+      debug:
+        msg: "{{ external_dict.dict_key }}"
+
+    - name: Test external named dictionary dictionary key value with brackets notation
+      debug:
+        msg: "{{ external_dict['dict_key'] }}"
  
-    - name: Test inline named list first item dot notation
+    - name: Test external named inline dictionary dictionary
       debug:
-        msg: "{{ inline_named_list.0 }}"
+        msg: "{{ external_inline_dict }}"
  
-    - name: Test inline named list first item brackets notation
+    - name: Test external named inline dictionary dictionary key value with dictionary dot notation
       debug:
-        msg: "{{ inline_named_list[0] }}"
+        msg: "{{ external_inline_dict.inline_dict_key }}"
+ 
+    - name: Test external named inline dictionary dictionary key value with brackets notation
+      debug:
+        msg: "{{ external_inline_dict['inline_dict_key'] }}"
+ 
+    - name: Test external named list
+      debug:
+        msg: "{{ external_named_list }}"
+ 
+    - name: Test external named list first item dot notation
+      debug:
+        msg: "{{ external_named_list.0 }}"
+ 
+    - name: Test external named list first item brackets notation
+      debug:
+        msg: "{{ external_named_list[0] }}"
+ 
+    - name: Test external inline named list
+      debug:
+        msg: "{{ external_inline_named_list }}"
+ 
+    - name: Test external inline named list first item dot notation
+      debug:
+        msg: "{{ external_inline_named_list.0 }}"
+ 
+    - name: Test external inline named list first item brackets notation
+      debug:
+        msg: "{{ external_inline_named_list[0] }}"
+
  
 # Three dots indicate the end of a YAML document
 ...
