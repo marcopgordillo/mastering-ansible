@@ -6,21 +6,31 @@
 -
  
   # Target: where our play will run and options it will run with
-  hosts: centos
+  hosts: linux
   become: true
-  gather_facts: false
 
   # Variable: variables that will apply to the play, on all target systems
   vars:
-    motd: "Welcome to CentOS Linux - Ansible Rocks\n"
+    motd_centos: "Welcome to CentOS Linux - Ansible Rocks\n"
+    motd_debian: "Welcome to Debian Linux - Ansible Rocks\n"
 
   # Task: the list of tasks that will be executed within the playbook
   tasks:
     - name: Configure a MOTD (message of the day)
       copy:
-        content: "{{ motd }}"
+        content: "{{ motd_centos }}"
         dest: /etc/motd
       notify: MOTD changed
+      when: ansible_distribution == "CentOS"
+
+    - name: Configure a MOTD (message of the day)
+      copy:
+        content: "{{ motd_debian }}"
+        dest: /etc/motd
+      notify: MOTD changed
+      when: ansible_distribution == "Debian"
+
+  # Handlers: handlers that are executed as a notify key from a task
 
   # Handlers: handlers that are executed as a notify key from a task
   handlers:
