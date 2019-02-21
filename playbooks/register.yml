@@ -24,13 +24,13 @@
         dest: /etc/yum.conf
         line: proxy=http://proxy.unasursg.org:3128
         insertafter: [main]
-      when: command_register.changed
+      when: command_register is changed
 
     - name: Install patch when changed
       yum:
         name: patch
         state: present
-      when: command_register.changed
+      when: command_register is changed
 
 # Three dots indicate the end of a YAML document
 ...
