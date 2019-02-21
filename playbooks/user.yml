@@ -12,35 +12,18 @@
   tasks:
     - name: Creating user
       user:
-        name: "{{ item.1 }}"
-        comment: "{{ item.1 | title }} {{ item.0.surname }}"
-      with_subelements:
-        -
-          - surname: Spurin
-            members:
-              - james
-              - harley
-              - lily
-              - anwen
-          - surname: Jalba
-            members:
-              - ana
-          - surname: Angne
-            members:
-              - abhishek
-          - surname: Mahmood
-            members:
-              - sara
-        - members
-    - name: Creating user directories
-      file:
-        dest: "/home/{{ item.0 }}/{{ item.1 }}"
-        owner: "{{ item.0 }}"
-        group: "{{ item.0 }}"
-        state: directory
-      with_together:
-        - [ james, harley, lily, anwen, ana, abhishek, sara ]
-        - [ tech, psychology, dancing, smiling, japanese, coffe, music ]
+        name: "{{ item.key }}"
+        comment: "{{ item.value.full_name }}"
+      with_dict: 
+        james: 
+          full_name: James Spurin
+
+    - name: Create authorized key
+      authorized_key:
+        user: james
+        key: "{{ item }}"
+      with_file:
+        - /home/mgordillo/.ssh/id_rsa.pub
 
 # Three dots indicate the end of a YAML document
 ...
