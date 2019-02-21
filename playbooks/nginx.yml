@@ -7,6 +7,7 @@
 
   # Target: where our play will run and options it will run with
   hosts: debian3,centos3
+  become: true
 
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
