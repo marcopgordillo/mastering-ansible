@@ -15,13 +15,22 @@
         name: "{{ item.1 }}"
         comment: "{{ item.1 | title }} {{ item.0.surname }}"
       with_subelements:
-        - family:
-            surname: Spurin
+        -
+          - surname: Spurin
             members:
               - james
               - harley
               - lily
               - anwen
+          - surname: Jalba
+            members:
+              - ana
+          - surname: Angne
+            members:
+              - abhishek
+          - surname: Mahmood
+            members:
+              - sara
         - members
  
 # Three dots indicate the end of a YAML document
