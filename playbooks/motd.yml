@@ -15,7 +15,9 @@
         content: "Welcome to {{ item }} Linux - Ansible Rocks!\n"
         dest: /etc/motd
       notify: MOTD changed
-      with_items: ['CentOS', 'Debian']
+      with_items:
+        - CentOS
+        - Debian
       when: ansible_distribution == item
 
   # Handlers: handlers that are executed as a notify key from a task
