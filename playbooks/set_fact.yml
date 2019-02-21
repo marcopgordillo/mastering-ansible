@@ -11,18 +11,23 @@
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
   tasks:
-    - name: Set a fact
+    - name: Set our installation variables for CentOS
       set_fact:
-        our_fact: Ansible Rocks!
-        ansible_distribution: "{{ ansible_distribution | upper }}"
+        webserver_application_port: 80
+        webserver_application_path: /usr/share/www
+        webserver_application_user: root
+      when: ansible_distribution == 'CentOS'
 
-    - name: Show our_fact
-      debug:
-        msg: "{{ our_fact }}"
+    - name: Set our installation variables for Ubuntu
+      set_fact:
+        webserver_application_port: 8080
+        webserver_application_path: /local/nginx
+        webserver_application_user: nginx
+      when: ansible_distribution == 'Debian'
 
-    - name: Show ansible_distribution
+    - name: Show pre-set distribution based facts
       debug:
-        msg: "{{ ansible_distribution }}"
+        msg: "webserver_application_port:{{ webserver_application_port }} webserver_application_path:{{ webserver_application_path }} webserver_application_user:{{ webserver_application_user }}"
 
 # Three dots indicate the end of a YAML document
 ...
