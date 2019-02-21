@@ -14,10 +14,15 @@
     - name: Set a fact
       set_fact:
         our_fact: Ansible Rocks!
+        ansible_distribution: "{{ ansible_distribution | upper }}"
 
-    - name: Show custom fact
+    - name: Show our_fact
       debug:
         msg: "{{ our_fact }}"
+
+    - name: Show ansible_distribution
+      debug:
+        msg: "{{ ansible_distribution }}"
 
 # Three dots indicate the end of a YAML document
 ...
