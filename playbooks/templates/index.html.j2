@@ -168,9 +168,9 @@
 
                     <img src="
                               {%- if ansible_distribution == 'CentOS' -%}
-                              CentOS
+                               {{ centos_logo }} 
                               {%- elif ansible_distribution == 'Debian' -%}
-                              Debian
+                               {{ debian_logo }}
                               {%- endif %}
 " class="intro" alt="mainpic">
                     <h1>Mastering Ansible</h1>
