@@ -14,7 +14,8 @@
     - name: Exploring register
       command: hostname -s
       register: hostname_output
-      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+      when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7") or
+            (ansible_distribution == "Debian" and ansible_distribution_major_version == "9")
 
     - name: Show hostname_output
       debug:
