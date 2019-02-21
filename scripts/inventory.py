@@ -133,4 +133,4 @@ class Inventory(object):
 # Call the Inventory class constructor (__init__)
 # Pass include_hostsvars_in_list as True to include hostvars
 # as _meta data in list output
-Inventory(include_hostvars_in_list=False)
+Inventory(include_hostvars_in_list=True)
