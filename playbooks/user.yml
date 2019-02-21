@@ -38,9 +38,9 @@
         owner: "{{ item.0 }}"
         group: "{{ item.0 }}"
         state: directory
-      with_nested:
+      with_together:
         - [ james, harley, lily, anwen, ana, abhishek, sara ]
-        - [ photos, movies, documents ]
+        - [ tech, psychology, dancing, smiling, japanese, coffe, music ]
 
 # Three dots indicate the end of a YAML document
 ...
