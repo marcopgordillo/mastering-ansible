@@ -13,6 +13,7 @@
     - name: Creating user
       user:
         name: "{{ item }}"
+        state: absent
       with_items: 
         - james
         - hayley
