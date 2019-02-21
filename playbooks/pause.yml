@@ -11,9 +11,9 @@
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
   tasks:
-    - name: Pause our playbook for 10 seconds
+    - name: Pause to verify before continue
       pause:
-        seconds: 10
+        prompt: Please check that the webserver is running, press enter to continue
 
 # Three dots indicate the end of a YAML document
 ...
