@@ -12,13 +12,17 @@
   tasks:
     - name: Creating user
       user:
-        name: "{{ item }}"
-        state: absent
-      with_items: 
-        - james
-        - hayley
-        - lily
-        - anwen
+        name: "{{ item.key }}"
+        comment: "{{ item.value.full_name }}"
+      with_dict:
+        james:
+          full_name: James Spurin
+        harley:
+          full_name: Harley Spurin
+        lily:
+          full_name: Lily Spurin
+        anwen:
+          full_name: Anwen Spurin
  
 # Three dots indicate the end of a YAML document
 ...
