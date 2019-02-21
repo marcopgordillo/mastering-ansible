@@ -14,6 +14,9 @@
     - name: Exploring register
       command: hostname -s
       register: hostname_output
+    - name: Show hostname_output
+      debug:
+        var: hostname_output
 
 # Three dots indicate the end of a YAML document
 ...
