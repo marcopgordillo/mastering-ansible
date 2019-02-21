@@ -32,6 +32,15 @@
             members:
               - sara
         - members
- 
+    - name: Creating user directories
+      file:
+        dest: "/home/{{ item.0 }}/{{ item.1 }}"
+        owner: "{{ item.0 }}"
+        group: "{{ item.0 }}"
+        state: directory
+      with_nested:
+        - [ james, harley, lily, anwen, ana, abhishek, sara ]
+        - [ photos, movies, documents ]
+
 # Three dots indicate the end of a YAML document
 ...
