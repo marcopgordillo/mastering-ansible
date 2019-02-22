@@ -71,5 +71,13 @@
       debug:
         var: jobids
 
+    - name: 'Wait for Job IDs'
+      async_status:
+        jid: "{{ item }}"
+      with_items: "{{ jobids }}"
+      register: jobs_result
+      until: jobs_result.finished
+      retries: 30
+
 # Three dots indicate the end of a YAML document
 ...
