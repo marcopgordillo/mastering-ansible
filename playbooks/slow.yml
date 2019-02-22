@@ -9,9 +9,9 @@
   hosts: linux
   gather_facts: false
   serial:
-    - 1
-    - 2
-    - 3
+    - 16%
+    - 34%
+    - 50%
 
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
