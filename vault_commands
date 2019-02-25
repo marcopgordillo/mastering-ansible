@@ -8,3 +8,6 @@ echo newpass > password_file
 ansible-vault --vault-id password_file view playbooks/external_vault_vars.yml
 ansible-vault --vault-id @prompt view playbooks/external_vault_vars.yml
 ansible-vault --vault-id @password_file view playbooks/external_vault_vars.yml
+ansible-vault --vault-id vars@prompt encrypt playbooks/external_vault_vars.yml
+ansible-vault --vault-id ssh@prompt encrypt playbooks/external_vault_vars.yml
+ansible-playbook --vault-id vars@prompt --vault-id ssh@prompt playbooks/vault.yml
