@@ -3,3 +3,8 @@ ansible --ask-vault-pass all -m ping -o
 ansible-vault --ask-vault-pass encrypt playbooks/external_vault_vars.yml
 ansible-vault --ask-vault-pass decrypt playbooks/external_vault_vars.yml
 ansible-vault --ask-vault-pass rekey playbooks/external_vault_vars.yml
+ansible-vault --ask-vault-pass view playbooks/external_vault_vars.yml
+echo newpass > password_file
+ansible-vault --vault-id password_file view playbooks/external_vault_vars.yml
+ansible-vault --vault-id @prompt view playbooks/external_vault_vars.yml
+ansible-vault --vault-id @password_file view playbooks/external_vault_vars.yml
