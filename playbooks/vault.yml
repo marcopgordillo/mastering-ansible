@@ -16,9 +16,9 @@
   # can also be used for pre and post tasks
   tasks:
 
-    - name: Show external_vault_var
+    - name: Show external_example_var
       debug:
-        var: external_var
+        var: external_example_key
 
 # Three dots indicate the end of a YAML document
 ...
