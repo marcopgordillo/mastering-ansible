@@ -21,6 +21,10 @@
         state: reloaded
       delegate_to: dnsmasq
       run_once: true
+    - name: Check DNS entries for all hosts
+      debug: 
+        msg: "The IPv4 address for dynamic_{{ item }} is {{ lookup('dig', 'dynamic_{{ item }}.', '@172.17.100.26') }}"
+      with_items: "{{ play_hosts }}"
 
 # Three dots indicate the end of a YAML document
 ...
