@@ -20,6 +20,7 @@
         name: dnsmasq
         state: reloaded
       delegate_to: dnsmasq
+      run_once: true
 
 # Three dots indicate the end of a YAML document
 ...
