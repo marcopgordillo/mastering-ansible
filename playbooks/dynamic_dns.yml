@@ -15,5 +15,11 @@
       command: "/usr/local/bin/hostsman -i dynamic_{{ ansible_hostname }}:{{ ansible_default_ipv4.address }}"
       delegate_to: dnsmasq
 
+    - name: Reload dnsmasq
+      service:
+        name: dnsmasq
+        state: reloaded
+      delegate_to: dnsmasq
+
 # Three dots indicate the end of a YAML document
 ...
