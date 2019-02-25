@@ -11,22 +11,31 @@
   # Task: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
   tasks:
-    - name: A block of modules being executed
+
+    - name: Install patch and python-dns
       block:
-        - name: Example 1 CentOS only
-          debug:
-            msg: Example 1 CentOS only
-          when: ansible_distribution == 'CentOS'
+        - name: Install patch
+          package:
+            name: patch
 
-        - name: Example 2 Debian only
-          debug:
-            msg: Example 2 Debian only
-          when: ansible_distribution == 'Debian'
+        - name: Install python-dnspython
+          package:
+            name: python-dnspython
 
-        - name: Example 3 with items
-          debug:
-            msg: "Example 3 with items - {{ item }}"
-          with_items: ['x', 'y', 'z'] 
+      rescue:
+        - name: Rollback patch
+          package:
+            name: patch
+            state: absent
+
+        - name: Rollback python-dnspython
+          package:
+            name: python-dnspython
+            state: absent
+
+      always:
+        - debug:
+            msg: This always runs, regardless
 
 # Three dots indicate the end of a YAML document
 ...
