@@ -1,0 +1,2 @@
+ansible-vault encrypt_string --ask-vault-pass --name 'ansible_become_pass' 'newpass'
+ansible --ask-vault-pass all -m ping -o
