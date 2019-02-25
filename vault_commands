@@ -1,2 +1,4 @@
 ansible-vault encrypt_string --ask-vault-pass --name 'ansible_become_pass' 'newpass'
 ansible --ask-vault-pass all -m ping -o
+ansible-vault --ask-vault-pass encrypt playbooks/external_vault_vars.yml
+ansible-vault --ask-vault-pass decrypt playbooks/external_vault_vars.yml
