@@ -15,17 +15,17 @@
       tags:
         - include_tasks_deprecated
 
-#    - include_tasks: include_tasks.yml
-#      tags:
-#        - include_tasks
+    - include_tasks: include_tasks.yml
+      tags:
+        - include_tasks
 
-#- include: include.yml
-#  tags:
-#    - include_playbook
+- include: include.yml
+  tags:
+    - include_playbook
 
-#- import_playbook: import.yml
-#  tags:
-#    - import_playbook
+- import_playbook: import.yml
+  tags:
+    - import_playbook
 
 # Three dots indicate the end of a YAML document
 ...
