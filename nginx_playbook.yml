@@ -11,6 +11,7 @@
   # Roles: list of roles to be imported into the play
   roles:
     - nginx
+    - awesomeweb
 
 # Three dots indicate the end of a YAML document
 ...
