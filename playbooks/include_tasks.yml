@@ -1,16 +1,9 @@
 ---
 # YAML documents begin with the document separator ---
 
-- set_fact:
-    include_tasks_var: foo
-
-- name: 2nd Task
+- name: Sub Task
   debug: 
-    msg: 2nd Task
-
-- name: 3rd Task
-  debug: 
-    msg: 3rd Task
+    msg: "Sub Task - {{ item }}"
 
 # Three dots indicate the end of a YAML document
 ...
