@@ -13,7 +13,7 @@
   tasks:
 
      - set_fact:
-         include_playbook_var: true
+         import_playbook_var: true
 
      - debug:
          msg: Playbook executed
