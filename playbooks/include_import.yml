@@ -3,20 +3,29 @@
 
 # The minus in YAML this indicates a list item.  The playbook contains a list
 # of plays, with each play being a dictionary
+-
 
-# include (deprecated) is static
-#
-# Each task that is in the playbook in the include will be independently executed against
-# the when condition
-- include: include.yml
-  when: include_playbook_var is not defined
+  # Target: where our play will run and options it will run with
+  hosts: debian3
 
-# import_playbook is static
-#
-# Each task that is in the playbook in the import will be independently executed against
-# the when condition
-- import_playbook: import.yml
-  when: import_playbook_var is not defined
+  # Task: the list of tasks that will be executed within the play, this section
+  # can also be used for pre and post tasks
+  tasks:
+    - include: include_tasks_deprecated.yml
+      tags:
+        - include_tasks_deprecated
+
+#    - include_tasks: include_tasks.yml
+#      tags:
+#        - include_tasks
+
+#- include: include.yml
+#  tags:
+#    - include_playbook
+
+#- import_playbook: import.yml
+#  tags:
+#    - import_playbook
 
 # Three dots indicate the end of a YAML document
 ...

@@ -6,7 +6,7 @@
 -
 
   - debug:
-      msg: Include tasks executed
+      msg: Include tasks deprecated executed
 
 # Three dots indicate the end of a YAML document
 ...

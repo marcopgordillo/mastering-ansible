@@ -12,11 +12,8 @@
   # can also be used for pre and post tasks
   tasks:
 
-     - set_fact:
-         include_playbook_var: true
-
      - debug:
-         msg: Playbook executed
+         msg: Include playbook executed
 
 # Three dots indicate the end of a YAML document
 ...
