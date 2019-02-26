@@ -12,15 +12,36 @@
   # can also be used for pre and post tasks
   tasks:
 
-     - name: Play 1 - Task 1
-       debug: 
-         msg: Play 1 - Task 1
+     - debug:
+         msg: ===================== Testing include_tasks =====================
 
-     - include_tasks: play1_task2.yml
+     # include_tasks is dynamic
+     #
+     # The when statement is executed once, if the condition is met, all
+     # tasks are executed
+     - include_tasks: include_tasks.yml
+       when: include_tasks_var is not defined
 
-     - import_tasks: play1_task3.yml
+     - debug:
+         msg: ======================== Testing include ========================
 
-- import_playbook: play2.yml
+     # include (deprecated) is static (unless overriden)
+     #
+     # Each task that in the include will be independently executed against
+     # the when condition
+     - include: include.yml
+       when: include_var is not defined
+       #static: false
+
+     - debug:
+         msg: ===================== Testing import_tasks ======================
+
+     # import_tasks is static
+     #
+     # Each task that in the include will be independently executed against
+     # the when condition
+     - import_tasks: import_tasks.yml
+       when: import_tasks_var is not defined
 
 # Three dots indicate the end of a YAML document
 ...

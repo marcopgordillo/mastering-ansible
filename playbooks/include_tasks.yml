@@ -2,7 +2,7 @@
 # YAML documents begin with the document separator ---
 
 - set_fact:
-    include_var: foo
+    include_tasks_var: foo
 
 - name: 2nd Task
   debug: 
