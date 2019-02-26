@@ -10,8 +10,7 @@
 
   # Roles: list of roles to be imported into the play
   roles:
-    - nginx
-    - { role: awesomeweb, target_dir: /tmp }
+    - awesome
 
 # Three dots indicate the end of a YAML document
 ...
