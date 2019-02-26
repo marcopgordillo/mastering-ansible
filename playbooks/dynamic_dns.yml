@@ -26,6 +26,12 @@
         msg: "The IPv4 address for dynamic_{{ item }} is {{ lookup('dig', 'dynamic_{{ item }}.', '@172.17.100.26') }}"
       with_items: "{{ play_hosts }}"
 
+    - name: Check DNS entry is pingable
+      icmp: 
+        target: "dynamic_{{ item }}"
+      with_items: "{{ play_hosts }}"
+
+
     - name: Remove dynamic dns rule
       command: "/usr/local/bin/hostsman -r dynamic_{{ ansible_hostname }}"
       delegate_to: dnsmasq
