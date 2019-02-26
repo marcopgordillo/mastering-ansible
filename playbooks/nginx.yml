@@ -98,7 +98,7 @@
         state: restarted
       notify: Check HTTP Service
       tags:
-        - nginx-running
+        - always
 
     - name: Open CentOS firewall for Nginx
       firewalld:
