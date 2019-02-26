@@ -1,0 +1,12 @@
+ansible-playbook --vault-id @prompt  playbooks/nginx.yml --tags 'install-nginx,patch-nginx'
+ansible-playbook --vault-id @prompt  playbooks/nginx.yml --tags 'tagged'
+ansible-playbook --vault-id @prompt  playbooks/nginx.yml --tags 'untagged'
+ansible-playbook --vault-id @prompt  playbooks/nginx.yml --tags 'all'
+ansible-playbook --vault-id @prompt  playbooks/nginx.yml --skip-tags 'nginx-open-firewall'
+
+for tag in playbooks/include_tasks_deprecated playbooks/include_tasks playbooks/include playbooks/import
+do
+echo Testing ${tag}
+ansible-playbook --vault-id @password_file playbooks/include_import.yml --tag ${tag}
+done
+
