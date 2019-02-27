@@ -21,6 +21,7 @@
         image: rastasheep/ubuntu-sshd
         ports:
           - "2222:22"
+          - "8090:80"
         command: /usr/sbin/sshd -D
 
     - add_host:
@@ -36,10 +37,9 @@
   # Target: where our play will run and options it will run with
   hosts: docker-container
 
-  # Task: the list of tasks that will be executed within the play, this section
-  # can also be used for pre and post tasks
-  tasks:
-    - ping:
+  # Roles: list of roles to be imported into the play
+  roles:
+    - awesomeweb
 
 # Three dots indicate the end of a YAML document
 ...
