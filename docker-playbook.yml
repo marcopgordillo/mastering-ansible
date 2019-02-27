@@ -23,5 +23,23 @@
           - "2222:22"
         command: /usr/sbin/sshd -D
 
+    - add_host:
+        hostname: "docker-container"
+        ansible_host: "{{ ansible_default_ipv4.address }}"
+        ansible_port: 2222
+        ansible_user: root
+        # This is reliant on sshpass being installed
+        ansible_password: root
+
+-
+
+  # Target: where our play will run and options it will run with
+  hosts: docker-container
+
+  # Task: the list of tasks that will be executed within the play, this section
+  # can also be used for pre and post tasks
+  tasks:
+    - ping:
+
 # Three dots indicate the end of a YAML document
 ...
