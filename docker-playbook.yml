@@ -60,7 +60,19 @@
 
     - name: Prompt for the site to be tested
       pause: 
-        prompt: "Check http://{{ ansible_default_ipv4.address }} "
+        prompt: "Check http://{{ ansible_default_ipv4.address }}"
+
+    - name: Remove containers
+      docker_container:
+        name: "{{ item }}"
+        state: absent
+      with_items: ['awesomeweb', 'sshdserver']
+
+    - name: Remove images
+      docker_image:
+        name: "{{ item }}"
+        state: absent
+      with_items: ['rastasheep/ubuntu-sshd', 'ansible/awesomeweb']
 
 # Three dots indicate the end of a YAML document
 ...
