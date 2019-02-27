@@ -10,7 +10,7 @@
 
   # Roles: list of roles to be imported into the play
   roles:
-    - awesome
+    - awesomeweb
 
 # Three dots indicate the end of a YAML document
 ...
