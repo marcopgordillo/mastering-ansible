@@ -41,5 +41,16 @@
   roles:
     - awesomeweb
 
+-  
+
+  # Target: where our play will run and options it will run with
+  hosts: ws-mgordillo
+
+  # Task: the list of tasks that will be executed within the play, this section
+  # can also be used for pre and post tasks
+  tasks:
+    - name: Create docker image from SSHD container
+      command: "docker commit -c 'CMD [\"nginx\", \"-g\", \"daemon off;\"]' sshdserver ansible/awesomeweb:latest"
+
 # Three dots indicate the end of a YAML document
 ...
