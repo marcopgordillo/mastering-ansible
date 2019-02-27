@@ -21,7 +21,6 @@
         image: rastasheep/ubuntu-sshd
         ports:
           - "2222:22"
-          - "8090:80"
         command: /usr/sbin/sshd -D
 
     - add_host:
@@ -51,6 +50,17 @@
   tasks:
     - name: Create docker image from SSHD container
       command: "docker commit -c 'CMD [\"nginx\", \"-g\", \"daemon off;\"]' sshdserver ansible/awesomeweb:latest"
+
+    - name: Create an awesomeweb container from the new ansible/awesomeweb docker image
+      docker_container:
+        name: awesomeweb
+        image: ansible/awesomeweb:latest
+        ports:
+          - "80:80"
+
+    - name: Prompt for the site to be tested
+      pause: 
+        prompt: "Check http://{{ ansible_default_ipv4.address }} "
 
 # Three dots indicate the end of a YAML document
 ...
